@@ -1,0 +1,65 @@
+.CatList {
+    /* max-width: 980px; */
+    background-color: #202124;
+    border-top: 0.5px solid #bdc1c6;
+    border-bottom: 1px solid #202124;
+    flex: 1;
+}
+
+.CatList .cats{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    padding: 0;
+}
+
+.CatList .cats li {
+    flex: 1 0 250px;
+    list-style: none;
+    border-radius: 5px;
+    color: #bdc1c6;
+    margin: 12px;
+}
+
+.CatList .cats img {
+    width: 100%;
+}
+
+.CatList p {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.CatList .tags {
+    display: flex;
+    gap: 8px;
+}
+
+.CatList .tags .tag {
+    padding: 3px;
+    border-radius: 2.5px;
+}
+
+.CatList .pages{
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    overflow: auto;
+    max-width: 980px;
+    margin: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding: 8px;
+    color: #bdc1c6;
+}
+
+.CatList .pages button {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: #bdc1c6;
+}
