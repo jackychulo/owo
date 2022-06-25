@@ -1,0 +1,115 @@
+.Nav {
+    background-color: #202124;
+    color: white;
+}
+
+.Nav .navbar {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 12px;
+
+    display: flex;
+    align-items: center;
+
+}
+
+.Nav .navbar h2 {
+    margin-right: 12px;
+}
+
+.Nav .navbar .searchbar {
+    display: flex;
+    border-radius: 10px;
+
+    max-width: 690px;
+}
+
+.Nav .navbar .searchbar input {
+    padding: 8px;
+    border: none;
+    background-color: #303134;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 15px;
+    color: white;
+}
+
+.Nav .navbar .searchbar input:focus {
+    outline-width: 0;
+}
+
+.Nav .navbar .searchbar input[type=text] {
+    width: 500px;
+}
+
+.Nav .navbar .searchbar button {
+    border: none;
+    background-color: #303134;
+    color: #8ab4f8;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 7.5px;
+    padding-right: 12px;
+    padding-left: 12px;
+    border-left: 1px solid #8ab4f8;
+    cursor: pointer;
+}
+
+.Nav .navbar .searchbar .firstbtn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border: none;
+    color: #757b80;
+}
+
+.Nav .navbar .searchbar .searchIcon {
+    font-size: 18px;
+}
+
+.Nav .navbar .searchbar .searchReset {
+    font-size: 22px;
+}
+
+.Nav .tags {
+    display: flex;
+    margin: 0 auto;
+    max-width: 980px;
+    gap: 16px;
+    padding: 12px;
+    padding-top: 0;
+    color: #969ba1;
+}
+
+.Nav .tags .activeTag {
+    color:  #8ab4f8;
+}
+
+@media screen and (max-width: 1300px) {
+    .Nav .navbar .searchbar {
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .Nav .navbar .searchbar form {
+        width: 100%;
+    }
+
+    .Nav .navbar .searchbar input[type=text] {
+        width: 100%;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+/* @media only screen and (max-width: 600px) {...} */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {...} */
+
+/* Medium devices (landscape tablets, 768px and up) */
+/* @media only screen and (min-width: 768px) {...} */
+
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) {...} */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {...} */
