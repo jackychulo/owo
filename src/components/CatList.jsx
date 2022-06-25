@@ -7,7 +7,7 @@ import './CatList.css'
 const CatList = () => {
 
     const cats = useSelector(state => state.search.images)
-    const [pages, setPages] = useState(0)
+    const [pages, setPages] = useState(null)
     const [currentPage, setCurrentPage] = useState(1)
     const [currentCats, setCurrentCats] = useState([])
 
@@ -45,7 +45,7 @@ const CatList = () => {
                 ))}
             </ul>
             <div className="pages">
-                <h1>\ OwO /</h1>
+                {pages? <h1>\ OwO /</h1> : null}
                 {[...Array(pages)].map((e, i) => (
                     <button
                         key={i}

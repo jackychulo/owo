@@ -16,6 +16,7 @@
 
 .CatList .cats li {
     flex: 1 0 250px;
+    max-width: 300px;
     list-style: none;
     border-radius: 5px;
     color: #bdc1c6;
@@ -33,10 +34,12 @@
 
 .CatList .tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
 }
 
 .CatList .tags .tag {
+    display: flex;
     padding: 3px;
     border-radius: 2.5px;
 }
@@ -62,4 +65,16 @@
     border: none;
     font-size: 18px;
     color: #bdc1c6;
+}
+
+@media screen and (max-width: 864px){
+    .CatList .cats li {
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 577px){
+    .CatList .cats li {
+        max-width: 100%;
+    }
 }
