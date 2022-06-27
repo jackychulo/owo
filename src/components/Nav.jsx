@@ -26,9 +26,18 @@ const Nav = () => {
         /* dispatch(searchSlice.submitSearch()) */
         e.preventDefault()
         console.log("helo");
-        if (searchInput) dispatch(searchSlice.fetchCatsByTags({ q: searchInput }))
+        if (searchInput) {
+            //or switch in the future
+            if (activeTag === 'All') {
+                dispatch(searchSlice.fetchCatsByTags({ q: searchInput }))
+                dispatch(searchSlice.fetchCatsByBreeds({ q: searchInput }))
+            } else if (activeTag === 'Breed') {
+                dispatch(searchSlice.fetchCatsByTags({ q: searchInput }))
+            } else {
+                dispatch(searchSlice.fetchCatsByBreeds({ q: searchInput }))
+            }
+        }
     }
-
 
     return (
         <div className='Nav'>
@@ -40,7 +49,9 @@ const Nav = () => {
                             value={searchInput}
                             onChange={e => dispatch(searchSlice.updateSearch(e.target.value))} />
                     </form>
-                    <button className='firstbtn' onClick={() => dispatch(searchSlice.emptySearch())}><Ai.AiOutlineClose className='searchReset' /></button>
+                    {searchInput && <button
+                        className='firstbtn' 
+                        onClick={() => dispatch(searchSlice.emptySearch())}><Ai.AiOutlineClose className='searchReset' /></button>}
                     <button className='searchbtn' onClick={clickSubmit}><Bs.BsSearch className='searchIcon' /></button>
                 </div>
             </div>

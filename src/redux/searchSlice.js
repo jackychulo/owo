@@ -6,7 +6,8 @@ export const searchSlice = createSlice({
     search: '',
     activeTag: 'All',
     scrollDown: false,
-    status: 'idle',
+    imgStatus: 'idle',
+    breedsStatus: 'idle',
     error: '',
     breeds: [],
     images: []
@@ -47,14 +48,24 @@ export const searchSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchCatsByTags.pending, (state, action) => {
-        state.status = 'loading'
+        state.imgStatus = 'loading'
       })
       .addCase(fetchCatsByTags.fulfilled, (state, action) => {
-        state.status = 'succeeded'
+        state.imgStatus = 'succeeded'
         state.images = action.payload
       })
       .addCase(fetchCatsByTags.rejected, (state, action) => {
-        state.status = 'failed'
+        state.imgStatus = 'failed'
+        state.error = action.error.message
+      }).addCase(fetchCatsByBreeds.pending, (state, action) => {
+        state.breedsStatus = 'loading'
+      })
+      .addCase(fetchCatsByBreeds.fulfilled, (state, action) => {
+        state.breedsStatus = 'succeeded'
+        state.breeds = action.payload
+      })
+      .addCase(fetchCatsByBreeds.rejected, (state, action) => {
+        state.breedsStatus = 'failed'
         state.error = action.error.message
       })
   }
@@ -66,8 +77,8 @@ export const fetchCatsByTags = createAsyncThunk('search/fetchCats', async (data)
   const result = q.trim().split(/\s+/)
   let tags = ''
   for (let index = 0; index < result.length; index++) {
-    if(index !== 0) tags+=","
-    tags+= result[index]
+    if (index !== 0) tags += ","
+    tags += result[index]
   }
   const res = await fetch(`https://cataas.com/api/cats?tags=${tags}`)
     .then(res => res.json())
@@ -76,6 +87,25 @@ export const fetchCatsByTags = createAsyncThunk('search/fetchCats', async (data)
 
   return res
 });
+
+export const fetchCatsByBreeds = createAsyncThunk('search/fetchBreeds', async (data) => {
+
+  const { q } = data
+
+  const res = await fetch(`https://api.thecatapi.com/v1/breeds/search?q=${q}`, {
+    headers: {
+      'x-api-key': process.env.REACT_APP_CAT_API
+    }
+  })
+    .then(res => res.json())
+    .then(res => res)
+    .catch(err => err)
+
+  console.log(res);
+
+  return res
+});
+
 
 
 //for components

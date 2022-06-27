@@ -1,16 +1,23 @@
 .CatList {
     /* max-width: 980px; */
     background-color: #202124;
-    border-top: 0.5px solid #bdc1c6;
     border-bottom: 1px solid #202124;
     flex: 1;
+}
+
+.CatList h3 {
+    color: #bdc1c6;
+    margin-bottom: 0;
+    font-weight: bold;
+    max-width: 980px;
+    margin: auto;
+    padding-left: 8px;
 }
 
 .CatList .cats{
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-
     padding: 0;
 }
 
@@ -56,7 +63,7 @@
     margin: auto;
     margin-top: 16px;
     margin-bottom: 16px;
-    padding: 8px;
+    padding: 12px;
     color: #bdc1c6;
 }
 

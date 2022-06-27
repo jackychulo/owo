@@ -41,6 +41,7 @@ const Home = () => {
         if (searchInput !== '') {
             dispatch(searchSlice.submitSearch())
             dispatch(searchSlice.fetchCatsByTags({q: searchInput}))
+            dispatch(searchSlice.fetchCatsByBreeds({q: searchInput}))
             navigate("../search")
         }
     }

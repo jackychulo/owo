@@ -1,0 +1,10 @@
+@media screen and (max-width: 611px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .container img {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+}

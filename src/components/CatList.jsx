@@ -19,19 +19,16 @@ const CatList = () => {
     }, [cats])
 
     useEffect(() => {
-
         const startIndex = currentPage === 1 ? currentPage - 1 : currentPage * 1
-
         setCurrentCats(cats.slice(
             startIndex,
             startIndex + imgsPerPage
         ))
     }, [cats, currentPage])
 
-    console.log("currentCats size: ", currentCats);
-
     return (
         <div className='CatList'>
+            {currentCats.length!==0 && <h3>Images by Tag</h3>}
             <ul className='cats'>
                 {currentCats && currentCats.map(cat => (
                     <li key={cat.id}>
