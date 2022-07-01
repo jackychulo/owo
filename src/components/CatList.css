@@ -27,7 +27,6 @@
 
 .CatList .cats li {
     flex: 1 0 calc(20% - 12px);
-    max-width: calc(20%);
     list-style: none;
     border-radius: 5px;
     color: #bdc1c6;
@@ -88,14 +87,21 @@
 
 @media screen and (max-width: 900px) {
     .CatList .cats li {
-        flex: 1 0 calc(25% - 12px);
-        max-width: calc(25%);
+        flex: 1 0 calc(33% - 12px);
+        max-width: calc(33% - 12px);
     }
 }
 
 @media screen and (max-width: 577px) {
     .CatList .cats li {
-        flex: 1 0 calc(50% - 12px);
-        max-width: calc(50%);
+        flex: 1 0 calc(50% - 12px); /* -12px gap */
+        max-width: calc(50% - 12px);
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .CatList .cats li {
+        flex: 1 0 100%; /* -12px gap */
+        max-width: 100%;
     }
 }
