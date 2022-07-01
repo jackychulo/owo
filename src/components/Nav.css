@@ -15,6 +15,7 @@
 
 .Nav .navbar h2 {
     margin-right: 12px;
+    cursor: pointer;
 }
 
 .Nav .navbar .searchbar {
@@ -78,6 +79,10 @@
     padding: 12px;
     padding-top: 0;
     color: #969ba1;
+}
+
+.Nav .tags > * {
+    cursor: pointer;
 }
 
 .Nav .tags .activeTag {

@@ -3,32 +3,34 @@
     background-color: #202124;
     border-bottom: 1px solid #202124;
     flex: 1;
+    padding: 8px;
 }
 
 .CatList h3 {
     color: #bdc1c6;
-    margin-bottom: 0;
-    font-weight: bold;
     max-width: 980px;
     margin: auto;
-    padding-left: 8px;
 }
 
-.CatList .cats{
+.CatList span {
+    font-weight: normal;
+    color: #9aa0a6;
+    font-size: 14px;
+}
+
+.CatList .cats {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     padding: 0;
-    justify-content: center;
 }
 
 .CatList .cats li {
-    flex: 1 0 250px;
-    max-width: 300px;
+    flex: 1 0 calc(20% - 12px);
+    max-width: calc(20%);
     list-style: none;
     border-radius: 5px;
     color: #bdc1c6;
-    margin: 12px;
 }
 
 .CatList .cats img {
@@ -50,39 +52,50 @@
     display: flex;
     padding: 3px;
     border-radius: 2.5px;
+    font-size: 14px;
+    color: #9aa0a6;
 }
 
-.CatList .pages{
-    padding: 0;
+.CatList .pages-container {
     list-style: none;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
-    overflow: auto;
+    gap: 16px;
     max-width: 980px;
     margin: auto;
-    margin-top: 16px;
-    margin-bottom: 16px;
     padding: 12px;
     color: #bdc1c6;
 }
 
-.CatList .pages button {
+.CatList .pages-container h1 {
+    flex: 0 0 max-content;
+}
+
+.CatList .pages-container .pages {
+    display: flex;
+    align-items: center;
+    overflow: auto;
+    color: #bdc1c6;
+}
+
+.CatList .pages-container button {
     background-color: transparent;
     border: none;
     font-size: 18px;
     color: #bdc1c6;
+    cursor: pointer;
 }
 
-@media screen and (max-width: 864px){
+@media screen and (max-width: 900px) {
     .CatList .cats li {
-        max-width: 400px;
+        flex: 1 0 calc(25% - 12px);
+        max-width: calc(25%);
     }
 }
 
-@media screen and (max-width: 577px){
+@media screen and (max-width: 577px) {
     .CatList .cats li {
-        max-width: 100%;
+        flex: 1 0 calc(50% - 12px);
+        max-width: calc(50%);
     }
 }

@@ -28,28 +28,34 @@ const CatList = () => {
 
     return (
         <div className='CatList'>
-            {currentCats.length!==0 && <h3>Images by Tag</h3>}
+            {currentCats.length !== 0 ?
+                <h3>Images by Tag &nbsp; <span>Found {cats.length} cats</span></h3>
+                :
+                <h3>Cat Image Not Found</h3>
+            }
             <ul className='cats'>
                 {currentCats && currentCats.map(cat => (
                     <li key={cat.id}>
                         <img src={`https://cataas.com/cat/${cat.id}`} alt="cat" />
                         <div className="tags">
                             {cat.tags.map((tag, key) =>
-                                <div key={key} className="tag"><Ai.AiFillTag/>{tag}</div>
+                                <div key={key} className="tag"><Ai.AiFillTag />{tag}</div>
                             )}
                         </div>
                     </li>
                 ))}
             </ul>
-            <div className="pages">
-                {pages? <h1>\ OwO /</h1> : null}
-                {[...Array(pages)].map((e, i) => (
-                    <button
-                        key={i}
-                        style={(i + 1 === currentPage ? { color: '#8ab4f8' } : {})}
-                        onClick={() => setCurrentPage(i + 1)}
-                    >{i + 1}</button>
-                ))}
+            <div className="pages-container">
+                {pages ? <h1>\ OwO /</h1> : null}
+                <div className="pages">
+                    {[...Array(pages)].map((e, i) => (
+                        <button
+                            key={i}
+                            style={(i + 1 === currentPage ? { color: '#8ab4f8' } : {})}
+                            onClick={() => setCurrentPage(i + 1)}
+                        >{i + 1}</button>
+                    ))}
+                </div>
             </div>
         </div>
     )
