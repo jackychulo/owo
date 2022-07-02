@@ -8,7 +8,7 @@ const CatList = () => {
 
     const cats = useSelector(state => state.search.images)
     const [pages, setPages] = useState(null)
-    const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(null)
     const [currentCats, setCurrentCats] = useState([])
 
     const imgsPerPage = 15

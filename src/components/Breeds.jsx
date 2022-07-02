@@ -12,7 +12,7 @@ const Breeds = () => {
         breeds: {
             padding: '8px',
             backgroundColor: '#202124',
-            paddingBottom: '2rem'
+            paddingBottom: '2rem',
         },
         container: {
             margin: '0 auto',
@@ -54,8 +54,6 @@ const Breeds = () => {
         }
     }
 
-    console.log('hello');
-
     const breeds = useSelector(state => state.search.breeds)
     /* const status = useSelector(state => state.search.breedsStatus)
     const userInput = useSelector(state => state.search.search) */
@@ -68,25 +66,32 @@ const Breeds = () => {
             <div style={{ ...style.description, ...style.container, display: 'block' }}>
                 {breeds.slice(1, 3).map((breed, key) => (
                     <div style={style.breed} key={key} >
-                        <img
-                            style={{ float: 'right', marginLeft: '12px', marginTop: '18px' }}
-                            src={`https://cdn2.thecatapi.com/images/${breed.reference_image_id}.png`}
-                            alt={breeds.name}
-                            height='120px'
-                            onError={(e) => {
-                                e.target.src = `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`
-                                console.clear()
-                            }}
-                        />
+                        {breed.reference_image_id ?
+                            <img
+                                style={{ float: 'right', marginLeft: '12px', marginTop: '18px', ...style.img }}
+                                src={`https://cdn2.thecatapi.com/images/${breed.reference_image_id}.png`}
+                                alt={breed.name}
+                                height='150px'
+                                onError={(e) => {
+                                    e.target.src = `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`
+                                }}
+                            /> :
+                            <div style={{ marginLeft: '2rem', color: '#8ab4f8', marginTop: '18px', float: 'right' }}>
+                                NO CAT IMAGE <br />
+                            </div>
+                        }
                         <h4>{breed.name}</h4>
-                        <p>{breed.description}</p>
+                        <p>{breed.description || <p style={style.titleSub}>No Cat Description</p>}</p>
+                        <div>
+                            {/* TODO */}
+                        </div>
                     </div>
                 ))}
 
                 {/* More breeds */}
                 <div
                     style={{
-                        borderBottom: '1px solid #969ba1',
+                        borderBottom: '1px solid #969ba1', marginTop: '2.5rem',
                         transition: 'height 1s', overflow: 'hidden',
                     }}
                 >
@@ -118,11 +123,11 @@ const Breeds = () => {
                                 display: 'flex',
                             }}
                                 key={key}
-                                onClick={()=>{
+                                onClick={() => {
                                     console.log(breed.name);
                                     dispatch(searchSlice.updateSearch(breed.name))
-                                    dispatch(searchSlice.fetchCatsByBreeds({q: breed.name}))
-                                    dispatch(searchSlice.fetchCatsByTags({q: breed.name}))
+                                    dispatch(searchSlice.fetchCatsByBreeds({ q: breed.name }))
+                                    dispatch(searchSlice.fetchCatsByTags({ q: breed.name }))
                                 }}
                             >
                                 <Ai.AiOutlineSearch
@@ -155,7 +160,7 @@ const Breeds = () => {
                 <div style={style.container} className='container'>
                     <div>
                         <h4>{breeds[0].name}</h4>
-                        <p>{breeds[0].description}</p>
+                        <p>{breeds[0].description || <p style={style.titleSub}>No Cat Description</p>}</p>
                         <p><span style={style.boldt}>Origin:</span> {breeds[0].origin}</p>
                         <p><span style={style.boldt}>Life Span:</span> {breeds[0].life_span}</p>
                         <p><span style={style.boldt}>Temperament</span>: {breeds[0].temperament}</p>
@@ -167,14 +172,18 @@ const Breeds = () => {
                             <a style={style.link} href="https://vcahospitals.com/know-your-pet/cat-breeds/bengal">VCA Hospitals</a>
                         </p>
                     </div>
-                    <img
+                    {breeds[0].reference_image_id ? <img
                         style={style.img}
                         src={`https://cdn2.thecatapi.com/images/${breeds[0].reference_image_id}.png`}
                         alt={breeds[0].name}
                         onError={(e) => {
                             e.target.src = `https://cdn2.thecatapi.com/images/${breeds[0].reference_image_id}.jpg`
                         }}
-                    />
+                    /> :
+                        <h1 style={{ marginLeft: '2rem', color: '#8ab4f8' }}>
+                            NO CAT IMAGE <br />
+                            <span style={style.titleSub}>Go to Resources</span></h1>}
+
                 </div>
             </div>
             {breeds.length > 1 && <ExtraBreeds />}
