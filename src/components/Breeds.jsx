@@ -84,6 +84,7 @@ const Breeds = () => {
                         <p>{breed.description || <p style={style.titleSub}>No Cat Description</p>}</p>
                         <div>
                             {/* TODO */}
+                            <BsChevronDown />
                         </div>
                     </div>
                 ))}
