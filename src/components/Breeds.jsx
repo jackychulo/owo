@@ -57,6 +57,7 @@ const Breeds = () => {
     const breeds = useSelector(state => state.search.breeds)
     /* const status = useSelector(state => state.search.breedsStatus)
     const userInput = useSelector(state => state.search.search) */
+    console.log("hello");
 
     const ExtraBreeds = () => {
         const [expandMoreBreeds, setExpandMoreBreeds] = useState(false)
@@ -71,7 +72,7 @@ const Breeds = () => {
                                 style={{ float: 'right', marginLeft: '12px', marginTop: '18px', ...style.img }}
                                 src={`https://cdn2.thecatapi.com/images/${breed.reference_image_id}.png`}
                                 alt={breed.name}
-                                height='150px'
+                                height='200px'
                                 onError={(e) => {
                                     e.target.src = `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`
                                 }}
@@ -82,10 +83,16 @@ const Breeds = () => {
                         }
                         <h4>{breed.name}</h4>
                         <p>{breed.description || <p style={style.titleSub}>No Cat Description</p>}</p>
-                        <div>
-                            {/* TODO */}
-                            <BsChevronDown />
-                        </div>
+                        <p><span style={style.boldt}>Origin:</span> {breeds.origin || 'None'}</p>
+                        <p><span style={style.boldt}>Life Span:</span> {breeds.life_span || 'None'}</p>
+                        <p><span style={style.boldt}>Temperament</span>: {breeds.temperament || 'None'}</p>
+                        <p>
+                            <span style={style.boldt}>Resources:</span> &nbsp;
+                            <a style={{ ...style.link, display: breed.wikipedia_url? 'inlineBlock' : 'none' }} href={breed.wikipedia_url}>Wikipedia</a>  &emsp;
+                            <a style={{ ...style.link, display: breed.cfa_url? 'inlineBlock' : 'none'}} href={breed.cfa_url}>CFA</a> &emsp;
+                            <a style={{ ...style.link, display: breed.vetstreet_url? 'inlineBlock' : 'none'}} href={breed.vetstreet_url}>Vet Street</a> &emsp;
+                            <a style={{ ...style.link, display: breed.vcahospitals_url? 'inlineBlock' : 'none'}} href={breed.vcahospitals_url}>VCA Hospitals</a>
+                        </p>
                     </div>
                 ))}
 
@@ -162,15 +169,15 @@ const Breeds = () => {
                     <div>
                         <h4>{breeds[0].name}</h4>
                         <p>{breeds[0].description || <p style={style.titleSub}>No Cat Description</p>}</p>
-                        <p><span style={style.boldt}>Origin:</span> {breeds[0].origin}</p>
-                        <p><span style={style.boldt}>Life Span:</span> {breeds[0].life_span}</p>
-                        <p><span style={style.boldt}>Temperament</span>: {breeds[0].temperament}</p>
+                        <p><span style={style.boldt}>Origin:</span> {breeds[0].origin || 'None'}</p>
+                        <p><span style={style.boldt}>Life Span:</span> {breeds[0].life_span || 'None'}</p>
+                        <p><span style={style.boldt}>Temperament</span>: {breeds[0].temperament || 'None'}</p>
                         <p>
                             <span style={style.boldt}>Resources:</span> &nbsp;
-                            <a style={style.link} href="https://en.wikipedia.org/wiki/Bengal_(cat)">Wikipedia</a>  &emsp;
-                            <a style={style.link} href="http://cfa.org/Breeds/BreedsAB/Bengal.aspx">CFA</a> &emsp;
-                            <a style={style.link} href="http://www.vetstreet.com/cats/bengal">Vet Street</a> &emsp;
-                            <a style={style.link} href="https://vcahospitals.com/know-your-pet/cat-breeds/bengal">VCA Hospitals</a>
+                            <a style={{ ...style.link, display: breeds[0].wikipedia_url? 'inlineBlock' : 'none' }} href={breeds[0].wikipedia_url}>Wikipedia</a>  &emsp;
+                            <a style={{ ...style.link, display: breeds[0].cfa_url? 'inlineBlock' : 'none'}} href={breeds[0].cfa_url}>CFA</a> &emsp;
+                            <a style={{ ...style.link, display: breeds[0].vetstreet_url? 'inlineBlock' : 'none'}} href={breeds[0].vetstreet_url}>Vet Street</a> &emsp;
+                            <a style={{ ...style.link, display: breeds[0].vcahospitals_url? 'inlineBlock' : 'none'}} href={breeds[0].vcahospitals_url}>VCA Hospitals</a>
                         </p>
                     </div>
                     {breeds[0].reference_image_id ? <img
