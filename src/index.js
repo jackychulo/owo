@@ -7,11 +7,10 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import catStore from './components/catStore';
 
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
 import Search from './pages/Search';
 import CatList from './components/CatList';
-import Nothing from './pages/Nothing';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,7 +22,6 @@ root.render(
           <Route path='search' element={<Search />}>
             <Route path=":searchInput" element={<CatList />} />
             <Route path="breed" element={<h1>BREEED</h1>} />
-           {/*  <Route index element={<Nothing />} /> */}
           </Route>
           <Route path='*' element={<main><h1>404 Moew</h1></main>} />
         </Routes>
