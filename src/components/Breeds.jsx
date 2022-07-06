@@ -23,7 +23,9 @@ const Breeds = () => {
         },
         breed: {
             padding: '12px 0 12px 0',
-            minHeight: '150px'
+            minHeight: '150px',
+            display: 'flex',
+            flexWrap: 'wrap'
         },
         description: {
             color: '#bdc1c6',
@@ -64,9 +66,23 @@ const Breeds = () => {
             <div style={{ ...style.description, ...style.container, display: 'block' }}>
                 {breeds.slice(1, 3).map((breed, key) => (
                     <div style={style.breed} key={key} >
+                        <div style={{flex: '2 0 450px', paddingRight: '12px'}}>
+                            <h4>{breed.name}</h4>
+                            <p>{breed.description || <p style={style.titleSub}>No Cat Description</p>}</p>
+                            <p><span style={style.boldt}>Origin:</span> {breeds.origin || 'None'}</p>
+                            <p><span style={style.boldt}>Life Span:</span> {breeds.life_span || 'None'}</p>
+                            <p><span style={style.boldt}>Temperament</span>: {breeds.temperament || 'None'}</p>
+                            <p>
+                                <span style={style.boldt}>Resources:</span> &nbsp;
+                                <a style={{ ...style.link, display: breed.wikipedia_url ? 'inlineBlock' : 'none' }} href={breed.wikipedia_url}>Wikipedia</a>  &emsp;
+                                <a style={{ ...style.link, display: breed.cfa_url ? 'inlineBlock' : 'none' }} href={breed.cfa_url}>CFA</a> &emsp;
+                                <a style={{ ...style.link, display: breed.vetstreet_url ? 'inlineBlock' : 'none' }} href={breed.vetstreet_url}>Vet Street</a> &emsp;
+                                <a style={{ ...style.link, display: breed.vcahospitals_url ? 'inlineBlock' : 'none' }} href={breed.vcahospitals_url}>VCA Hospitals</a>
+                            </p>
+                        </div>
                         {breed.reference_image_id ?
                             <img
-                                style={{ float: 'right', marginLeft: '12px', marginTop: '18px', ...style.img }}
+                                style={{flex: '1', alignSelf: 'flex-start', marginTop: '21.28px' }}
                                 src={`https://cdn2.thecatapi.com/images/${breed.reference_image_id}.png`}
                                 alt={breed.name}
                                 width={'250px'}
@@ -78,18 +94,6 @@ const Breeds = () => {
                                 NO CAT IMAGE <br />
                             </div>
                         }
-                        <h4>{breed.name}</h4>
-                        <p>{breed.description || <p style={style.titleSub}>No Cat Description</p>}</p>
-                        <p><span style={style.boldt}>Origin:</span> {breeds.origin || 'None'}</p>
-                        <p><span style={style.boldt}>Life Span:</span> {breeds.life_span || 'None'}</p>
-                        <p><span style={style.boldt}>Temperament</span>: {breeds.temperament || 'None'}</p>
-                        <p>
-                            <span style={style.boldt}>Resources:</span> &nbsp;
-                            <a style={{ ...style.link, display: breed.wikipedia_url ? 'inlineBlock' : 'none' }} href={breed.wikipedia_url}>Wikipedia</a>  &emsp;
-                            <a style={{ ...style.link, display: breed.cfa_url ? 'inlineBlock' : 'none' }} href={breed.cfa_url}>CFA</a> &emsp;
-                            <a style={{ ...style.link, display: breed.vetstreet_url ? 'inlineBlock' : 'none' }} href={breed.vetstreet_url}>Vet Street</a> &emsp;
-                            <a style={{ ...style.link, display: breed.vcahospitals_url ? 'inlineBlock' : 'none' }} href={breed.vcahospitals_url}>VCA Hospitals</a>
-                        </p>
                     </div>
                 ))}
 
@@ -177,17 +181,19 @@ const Breeds = () => {
                             <a style={{ ...style.link, display: breeds[0].vcahospitals_url ? 'inlineBlock' : 'none' }} href={breeds[0].vcahospitals_url}>VCA Hospitals</a>
                         </p>
                     </div>
-                    {breeds[0].reference_image_id ? <img
-                        src={`https://cdn2.thecatapi.com/images/${breeds[0].reference_image_id}.png`}
-                        alt={breeds[0].name}
-                        width={'350px'}
-                        onError={(e) => {
-                            e.target.src = `https://cdn2.thecatapi.com/images/${breeds[0].reference_image_id}.jpg`
-                        }}
-                    /> :
+                    {breeds[0].reference_image_id ?
+                        <img
+                            style={{width: '300px'}}
+                            src={`https://cdn2.thecatapi.com/images/${breeds[0].reference_image_id}.png`}
+                            alt={breeds[0].name}
+                            onError={(e) => {
+                                e.target.src = `https://cdn2.thecatapi.com/images/${breeds[0].reference_image_id}.jpg`
+                            }}
+                        /> :
                         <h1 style={{ marginLeft: '2rem', color: '#8ab4f8' }}>
                             NO CAT IMAGE <br />
-                            <span style={style.titleSub}>Go to Resources</span></h1>}
+                            <span style={style.titleSub}>Go to Resources</span>
+                        </h1>}
 
                 </div>
             </div>
