@@ -43,9 +43,6 @@ const Breeds = () => {
             textDecoration: 'none',
             color: '#8ab4f8'
         },
-        img: {
-            maxWidth: '300px',
-        },
         boldt: {
             fontWeight: 'bolder'
         },
@@ -72,7 +69,7 @@ const Breeds = () => {
                                 style={{ float: 'right', marginLeft: '12px', marginTop: '18px', ...style.img }}
                                 src={`https://cdn2.thecatapi.com/images/${breed.reference_image_id}.png`}
                                 alt={breed.name}
-                                height='200px'
+                                width={'250px'}
                                 onError={(e) => {
                                     e.target.src = `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`
                                 }}
@@ -88,16 +85,16 @@ const Breeds = () => {
                         <p><span style={style.boldt}>Temperament</span>: {breeds.temperament || 'None'}</p>
                         <p>
                             <span style={style.boldt}>Resources:</span> &nbsp;
-                            <a style={{ ...style.link, display: breed.wikipedia_url? 'inlineBlock' : 'none' }} href={breed.wikipedia_url}>Wikipedia</a>  &emsp;
-                            <a style={{ ...style.link, display: breed.cfa_url? 'inlineBlock' : 'none'}} href={breed.cfa_url}>CFA</a> &emsp;
-                            <a style={{ ...style.link, display: breed.vetstreet_url? 'inlineBlock' : 'none'}} href={breed.vetstreet_url}>Vet Street</a> &emsp;
-                            <a style={{ ...style.link, display: breed.vcahospitals_url? 'inlineBlock' : 'none'}} href={breed.vcahospitals_url}>VCA Hospitals</a>
+                            <a style={{ ...style.link, display: breed.wikipedia_url ? 'inlineBlock' : 'none' }} href={breed.wikipedia_url}>Wikipedia</a>  &emsp;
+                            <a style={{ ...style.link, display: breed.cfa_url ? 'inlineBlock' : 'none' }} href={breed.cfa_url}>CFA</a> &emsp;
+                            <a style={{ ...style.link, display: breed.vetstreet_url ? 'inlineBlock' : 'none' }} href={breed.vetstreet_url}>Vet Street</a> &emsp;
+                            <a style={{ ...style.link, display: breed.vcahospitals_url ? 'inlineBlock' : 'none' }} href={breed.vcahospitals_url}>VCA Hospitals</a>
                         </p>
                     </div>
                 ))}
 
                 {/* More breeds */}
-                <div
+                {breeds.length > 3 && <div
                     style={{
                         borderBottom: '1px solid #969ba1', marginTop: '2.5rem',
                         transition: 'height 1s', overflow: 'hidden',
@@ -149,7 +146,7 @@ const Breeds = () => {
                             </div>
                         ))}
                     </div>
-                </div>
+                </div>}
             </div>
         )
     }
@@ -174,16 +171,16 @@ const Breeds = () => {
                         <p><span style={style.boldt}>Temperament</span>: {breeds[0].temperament || 'None'}</p>
                         <p>
                             <span style={style.boldt}>Resources:</span> &nbsp;
-                            <a style={{ ...style.link, display: breeds[0].wikipedia_url? 'inlineBlock' : 'none' }} href={breeds[0].wikipedia_url}>Wikipedia</a>  &emsp;
-                            <a style={{ ...style.link, display: breeds[0].cfa_url? 'inlineBlock' : 'none'}} href={breeds[0].cfa_url}>CFA</a> &emsp;
-                            <a style={{ ...style.link, display: breeds[0].vetstreet_url? 'inlineBlock' : 'none'}} href={breeds[0].vetstreet_url}>Vet Street</a> &emsp;
-                            <a style={{ ...style.link, display: breeds[0].vcahospitals_url? 'inlineBlock' : 'none'}} href={breeds[0].vcahospitals_url}>VCA Hospitals</a>
+                            <a style={{ ...style.link, display: breeds[0].wikipedia_url ? 'inlineBlock' : 'none' }} href={breeds[0].wikipedia_url}>Wikipedia</a>  &emsp;
+                            <a style={{ ...style.link, display: breeds[0].cfa_url ? 'inlineBlock' : 'none' }} href={breeds[0].cfa_url}>CFA</a> &emsp;
+                            <a style={{ ...style.link, display: breeds[0].vetstreet_url ? 'inlineBlock' : 'none' }} href={breeds[0].vetstreet_url}>Vet Street</a> &emsp;
+                            <a style={{ ...style.link, display: breeds[0].vcahospitals_url ? 'inlineBlock' : 'none' }} href={breeds[0].vcahospitals_url}>VCA Hospitals</a>
                         </p>
                     </div>
                     {breeds[0].reference_image_id ? <img
-                        style={style.img}
                         src={`https://cdn2.thecatapi.com/images/${breeds[0].reference_image_id}.png`}
                         alt={breeds[0].name}
+                        width={'350px'}
                         onError={(e) => {
                             e.target.src = `https://cdn2.thecatapi.com/images/${breeds[0].reference_image_id}.jpg`
                         }}
